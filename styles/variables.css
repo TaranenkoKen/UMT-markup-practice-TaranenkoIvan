@@ -1,0 +1,17 @@
+:root {
+	--primary-bg: #ffffff;
+	--secondary-bg: #eeee60;
+	--primary-text: #030c01;
+	--primary-button: linear-gradient(102deg, #e8e81c 0%, #42ed13 100%);
+	--primary-button-active: #4e544d;
+
+	--small: 14px;
+	--regular: 16px;
+	--medium: 18px;
+	--large: 20px;
+	--heading: 34px;
+	--secondary-heading: 32px;
+	--heading-desktop: 48px;
+	--hero-title: 36px;
+	--hero-title-desktop: 56px;
+}
