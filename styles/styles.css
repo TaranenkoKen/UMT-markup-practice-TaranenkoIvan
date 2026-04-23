@@ -210,7 +210,7 @@ body {
 .hero-section {
 	padding: 38px 20px;
 	background-color: #d9d9d9;
-	background-image: url('/images/hero-bg@1x.jpg');
+	background-image: url('../images/hero-bg@1x.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -219,7 +219,7 @@ body {
 
 @media (-webkit-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 	.hero-section {
-		background-image: url('/images/hero-bg@2x.jpg');
+		background-image: url('../images/hero-bg@2x.jpg');
 	}
 }
 
