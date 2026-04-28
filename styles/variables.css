@@ -4,6 +4,9 @@
 	--primary-text: #030c01;
 	--primary-button: linear-gradient(102deg, #e8e81c 0%, #42ed13 100%);
 	--primary-button-active: #4e544d;
+	--borders: rgba(3, 12, 1, 0.15);
+	--pagination-button-hover-bg: #d9fbcf;
+	--pagination-button-active-bg: #7af259;
 
 	--small: 14px;
 	--regular: 16px;

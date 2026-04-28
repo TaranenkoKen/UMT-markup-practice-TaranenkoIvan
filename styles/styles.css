@@ -127,7 +127,22 @@ body {
 	background: transparent;
 	border-radius: 50%;
 	padding: 12px;
-	border: 1px solid rgba(3, 12, 1, 0.15);
+	border: 1px solid var(--borders);
+	transition: background 250ms ease-in-out;
+}
+
+.pagination-button:hover,
+.pagination-button:focus-visible {
+	background: var(--pagination-button-hover-bg);
+}
+
+.pagination-button:active {
+	background: var(--pagination-button-active-bg);
+}
+
+.pagination-button:disabled {
+	opacity: 0.3;
+	pointer-events: none;
 }
 
 .pagination-buttons {
@@ -239,7 +254,7 @@ body {
 }
 
 .hero-button {
-	width: 334px;
+	width: 335px;
 }
 
 /* About */
@@ -363,7 +378,7 @@ body {
 
 .quote-item {
 	border-radius: 16px;
-	border: 1px solid rgba(3, 12, 1, 0.15);
+	border: 1px solid var(--borders);
 	padding: 32px;
 	min-width: 335px;
 	height: 228px;
@@ -386,6 +401,10 @@ body {
 }
 
 /* Contact */
+#contacts .container {
+	max-width: 335px;
+}
+
 .contacts-content {
 	display: flex;
 	flex-direction: column;
@@ -479,7 +498,7 @@ address {
 
 .footer-caption {
 	font-size: var(--small);
-	border-top: 1px solid rgba(3, 12, 1, 0.15);
+	border-top: 1px solid var(--borders);
 	text-align: center;
 	padding-top: 32px;
 }
