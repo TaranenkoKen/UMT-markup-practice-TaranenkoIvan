@@ -116,8 +116,67 @@
 			<section id="bestsellers" class="section-wrapper">
 				<div class="container">
 					<h2 class="section-title bestsellers-title">Top-Selling Bouquets</h2>
-					<ul class="bestsellers-list">
-						<li class="bestsellers-list-item">
+					<div class="bestsellers-slider-layout">
+						<div class="bestsellers-slider-viewport" aria-busy="true">
+							<div
+								id="bestsellers-loader"
+								class="content-loader content-loader--bestsellers"
+								role="status"
+								aria-live="polite"
+								aria-label="Loading bestsellers"
+							>
+								<span class="content-loader__spinner" aria-hidden="true"></span>
+							</div>
+							<div
+								id="bestsellers-slider-stage"
+								class="bestsellers-slider-stage swiper"
+								aria-live="polite"
+							>
+								<ul
+									class="swiper-wrapper bestsellers-slider-list"
+									id="bestsellers-slider-list"
+								></ul>
+							</div>
+						</div>
+
+						<div class="bestsellers-pagination">
+							<ul class="pagination-dots swiper-pagination">
+								<!-- <li><span class="pagination-dot__active"></span></li>
+								<li><span class="pagination-dot"></span></li>
+								<li><span class="pagination-dot"></span></li>
+								<li><span class="pagination-dot"></span></li>
+								<li><span class="pagination-dot"></span></li>
+								<li><span class="pagination-dot"></span></li> -->
+							</ul>
+
+							<ul class="pagination-buttons">
+								<li>
+									<button
+										type="button"
+										class="pagination-button"
+										data-bestsellers-prev
+									>
+										<svg width="24px" height="24px">
+											<use href="./icons/sprite.svg#icon-left-arrow"></use>
+										</svg>
+									</button>
+								</li>
+								<li>
+									<button
+										type="button"
+										class="pagination-button"
+										data-bestsellers-next
+									>
+										<svg width="24px" height="24px">
+											<use href="./icons/sprite.svg#icon-right-arrow"></use>
+										</svg>
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- <ul class="bestsellers-list">
+						<li class="bestsellers-list-item bouquet-card">
 							<img
 								src="./images/spring-elegance@1x.png"
 								srcset="./images/spring-elegance@2x.png 2x"
@@ -133,7 +192,7 @@
 								<p class="price">$35</p>
 							</div>
 						</li>
-						<li class="bestsellers-list-item">
+						<li class="bestsellers-list-item bouquet-card">
 							<img
 								src="./images/berry-chic@1x.png"
 								srcset="./images/berry-chic@2x.png 2x"
@@ -149,7 +208,7 @@
 								<p class="price">$40</p>
 							</div>
 						</li>
-						<li class="bestsellers-list-item">
+						<li class="bestsellers-list-item bouquet-card">
 							<img
 								src="./images/lavender-dream@1x.png"
 								srcset="./images/lavender-dream@2x.png 2x"
@@ -165,33 +224,7 @@
 							</div>
 							<p class="price">$55</p>
 						</li>
-					</ul>
-					<div class="bestsellers-pagination">
-						<ul class="pagination-dots">
-							<li><span class="pagination-dot__active"></span></li>
-							<li><span class="pagination-dot"></span></li>
-							<li><span class="pagination-dot"></span></li>
-							<li><span class="pagination-dot"></span></li>
-							<li><span class="pagination-dot"></span></li>
-							<li><span class="pagination-dot"></span></li>
-						</ul>
-
-						<ul class="pagination-buttons">
-							<li>
-								<button type="button" class="pagination-button">
-									<svg width="24px" height="24px">
-										<use href="./icons/sprite.svg#icon-left-arrow"></use>
-									</svg>
-								</button>
-							</li>
-							<li>
-								<button type="button" class="pagination-button">
-									<svg width="24px" height="24px">
-										<use href="./icons/sprite.svg#icon-right-arrow"></use>
-									</svg>
-								</button>
-							</li>
-						</ul>
+					</ul> -->
 					</div>
 				</div>
 			</section>
@@ -202,126 +235,204 @@
 						Explore our stunning selection of fresh flower bouquets.
 					</p>
 
-					<ul class="bouquets-list">
-						<li class="bouquets-list-item">
+					<div class="bouquets-list-shell" aria-busy="true">
+						<div
+							id="bouquets-loader"
+							class="content-loader content-loader--bouquets"
+							role="status"
+							aria-live="polite"
+							aria-label="Loading bouquets"
+						>
+							<span class="content-loader__spinner" aria-hidden="true"></span>
+						</div>
+						<ul
+							class="bouquets-list"
+							id="bouquets-list"
+							aria-live="polite"
+						></ul>
+					</div>
+
+					<!-- <ul class="bouquets-list" id="bouquets-list">
+						<li class="bouquets-list-item bouquet-card">
 							<img
 								src="./images/peach-meadow@1x.png"
 								srcset="./images/peach-meadow@2x.png 2x"
 								alt="Side-view of a rose bouquet with wildflowers in a pink basket"
 								class="bouquets-list-image"
 							/>
-							<h3 class="section-subtitle">Peach Meadow</h3>
+							<h3 class="section-subtitle bouquets-list-title">Peach Meadow</h3>
 							<p class="section-subdescription bouquets-list-description">
 								A soft and radiant arrangement of peach and blush roses with
 								lush greenery in a straw basket — light and natural.
 							</p>
 							<p class="price">$55</p>
 						</li>
-						<li class="bouquets-list-item">
+						<li class="bouquets-list-item bouquet-card">
 							<img
 								src="./images/blush-romance@1x.png"
 								srcset="./images/blush-romance@2x.png 2x"
 								alt="florist makes beautiful bouquet in studio"
 								class="bouquets-list-image"
 							/>
-							<h3 class="section-subtitle">Blush Romance</h3>
+							<h3 class="section-subtitle bouquets-list-title">
+								Blush Romance
+							</h3>
 							<p class="section-subdescription bouquets-list-description">
 								A premium bouquet of deep pink and ivory roses, complemented by
 								silver eucalyptus — sophisticated and intimate.
 							</p>
 							<p class="price">$34</p>
 						</li>
-						<li class="bouquets-list-item">
+						<li class="bouquets-list-item bouquet-card">
 							<img
 								src="./images/pastel-garden@1x.png"
 								srcset="./images/pastel-garden@2x.png 2x"
 								alt="Pastel-toned mix of spray roses and greenery in a woven basket"
 								class="bouquets-list-image"
 							/>
-							<h3 class="section-subtitle">Pastel Garden</h3>
+							<h3 class="section-subtitle bouquets-list-title">
+								Pastel Garden
+							</h3>
 							<p class="section-subdescription bouquets-list-description">
 								A pastel-toned mix of spray roses and greenery in a woven basket
 								— gentle, airy, and perfect for any occasion.
 							</p>
 							<p class="price">$40</p>
 						</li>
-						<li class="bouquets-list-item">
+						<li class="bouquets-list-item bouquet-card">
 							<img
 								src="./images/tulip-charm@1x.png"
 								srcset="./images/tulip-charm@2x.png 2x"
 								alt="Vivid bouquet of bright tulips and roses in a lavender box"
 								class="bouquets-list-image"
 							/>
-							<h3 class="section-subtitle">Tulip Charm</h3>
+							<h3 class="section-subtitle bouquets-list-title">Tulip Charm</h3>
 							<p class="section-subdescription bouquets-list-description">
 								A vivid bouquet of bright tulips and roses in a lavender box —
 								cheerful and full of charm.
 							</p>
 							<p class="price">$61</p>
 						</li>
-						<li class="bouquets-list-item">
+						<li class="bouquets-list-item bouquet-card">
 							<img
 								src="./images/berry-bloom@1x.png"
 								srcset="./images/berry-bloom@2x.png 2x"
 								alt="Berry-themed bouquet with rich pink, purple, and cream blooms"
 								class="bouquets-list-image"
 							/>
-							<h3 class="section-subtitle">Berry Bloom</h3>
+							<h3 class="section-subtitle bouquets-list-title">Berry Bloom</h3>
 							<p class="section-subdescription bouquets-list-description">
 								A lush mix of rich pink, purple, and cream blooms with textured
 								greens — romantic and elegant.
 							</p>
 							<p class="price">$32</p>
 						</li>
-						<li class="bouquets-list-item">
+						<li class="bouquets-list-item bouquet-card">
 							<img
 								src="./images/sweet-whisper@1x.png"
 								srcset="./images/sweet-whisper@2x.png 2x"
 								alt="Charming spring bouquet with peonies, roses, and lilac-toned accents"
 								class="bouquets-list-image"
 							/>
-							<h3 class="section-subtitle">Sweet Whisper</h3>
+							<h3 class="section-subtitle bouquets-list-title">
+								Sweet Whisper
+							</h3>
 							<p class="section-subdescription bouquets-list-description">
 								A charming spring bouquet with peonies, roses, and lilac-toned
 								accents — fresh, lively, and expressive.
 							</p>
 							<p class="price">$40</p>
 						</li>
-						<li class="bouquets-list-item">
+						<li class="bouquets-list-item bouquet-card">
 							<img
 								src="./images/field-joy@1x.png"
 								srcset="./images/field-joy@2x.png 2x"
 								alt="Rustic hand-tied bouquet of sunflowers, lisianthus, and daisies"
 								class="bouquets-list-image"
 							/>
-							<h3 class="section-subtitle">Field Joy</h3>
+							<h3 class="section-subtitle bouquets-list-title">Field Joy</h3>
 							<p class="section-subdescription bouquets-list-description">
 								A rustic hand-tied bouquet of sunflowers, lisianthus, and
 								daisies — perfect for brightening the day.
 							</p>
 							<p class="price">$49</p>
 						</li>
-						<li class="bouquets-list-item">
+						<li class="bouquets-list-item bouquet-card">
 							<img
 								src="./images/soft-bloom@1x.png"
 								srcset="./images/soft-bloom@2x.png 2x"
 								alt="Delicate bouquet of pink carnations and roses wrapped in satin paper"
 								class="bouquets-list-image"
 							/>
-							<h3 class="section-subtitle">Soft Bloom</h3>
+							<h3 class="section-subtitle bouquets-list-title">Soft Bloom</h3>
 							<p class="section-subdescription bouquets-list-description">
 								A delicate bouquet of pink carnations and roses wrapped in satin
 								paper — soft, stylish, and versatile.
 							</p>
 							<p class="price">$37</p>
 						</li>
-					</ul>
+					</ul> -->
 					<button type="button" class="show-more-button primary-button">
 						Show More
 					</button>
 				</div>
 			</section>
 			<section id="feedback" class="section-wrapper">
+				<div class="container">
+					<h2 class="section-title feedback-title">What our clients says</h2>
+					<div class="feedback-slider-layout">
+						<div class="feedback-slider-viewport" aria-busy="true">
+							<div
+								id="feedback-loader"
+								class="content-loader content-loader--feedback"
+								role="status"
+								aria-live="polite"
+								aria-label="Loading feedback"
+							>
+								<span class="content-loader__spinner" aria-hidden="true"></span>
+							</div>
+							<div
+								id="feedback-slider-stage"
+								class="feedback-slider-stage swiper"
+								aria-live="polite"
+							>
+								<ul
+									class="swiper-wrapper feedback-slider-list"
+									id="feedback-slider-list"
+								></ul>
+							</div>
+						</div>
+						<ul class="pagination-buttons feedback-pagination">
+							<li>
+								<button
+									type="button"
+									class="pagination-button feedback-pagination-button"
+									data-feedback-prev
+									aria-label="Previous feedback"
+								>
+									<svg width="24px" height="24px">
+										<use href="./icons/sprite.svg#icon-left-arrow"></use>
+									</svg>
+								</button>
+							</li>
+							<li>
+								<button
+									type="button"
+									class="pagination-button feedback-pagination-button"
+									data-feedback-next
+									aria-label="Next feedback"
+								>
+									<svg width="24px" height="24px">
+										<use href="./icons/sprite.svg#icon-right-arrow"></use>
+									</svg>
+								</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- <section id="feedback" class="section-wrapper">
 				<div class="container">
 					<h2 class="section-title feedback-title">What our clients says</h2>
 					<ul class="feedback-list">
@@ -364,7 +475,7 @@
 						</li>
 					</ul>
 				</div>
-			</section>
+			</section> -->
 			<section id="contacts" class="section-wrapper">
 				<div class="container">
 					<div class="contacts-content">
@@ -517,6 +628,88 @@
 				Explore Bouquets
 			</button>
 		</div>
-		<script src="./js/mobile-menu.js"></script>
+		<div class="modal-background" id="detail-modal">
+			<div class="modal-container detail-modal-container">
+				<button
+					type="button"
+					class="modal-close-button"
+					id="modal-close-button"
+				>
+					<svg width="32px" height="32px">
+						<use href="./icons/sprite.svg#icon-close"></use>
+					</svg>
+				</button>
+				<div class="detail-modal-content" id="detail-modal-content"></div>
+			</div>
+		</div>
+		<div class="modal-background" id="order-modal">
+			<div class="modal-container order-modal-container">
+				<button
+					type="button"
+					class="modal-close-button"
+					id="modal-close-button"
+				>
+					<svg width="32px" height="32px">
+						<use href="./icons/sprite.svg#icon-close"></use>
+					</svg>
+				</button>
+				<div class="order-modal-content" id="order-modal-content">
+					<h2 class="order-modal-title">Order</h2>
+					<form class="order-modal-form" id="order-modal-form">
+						<div class="order-modal-field">
+							<label for="name" class="order-form-label">Name*</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Ann"
+								class="order-form-input"
+								required
+							/>
+						</div>
+						<div class="order-modal-field">
+							<label for="phone" class="order-form-label">Phone*</label>
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								placeholder="+1 (555) 123-4567"
+								class="order-form-input"
+								required
+							/>
+						</div>
+						<div class="order-modal-field">
+							<label for="address" class="order-form-label">Address</label>
+							<input
+								class="order-form-input"
+								type="text"
+								id="address"
+								name="address"
+								placeholder="456 Floral Ave, Sydney NSW 2000 AU"
+							/>
+						</div>
+						<div class="order-modal-field">
+							<label for="message" class="order-form-label">Message</label>
+							<textarea
+								class="order-form-textarea"
+								id="message"
+								name="message"
+								placeholder="Type your message..."
+								rows="5"
+							></textarea>
+						</div>
+						<button type="submit" class="order-form-button primary-button">
+							Go to Checkout
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="/js/mobile-menu.js"></script>
+		<script type="module" src="/js/modal.js"></script>
+		<script type="module" src="/js/notifications.js"></script>
+		<script type="module" src="/js/bouquets.js"></script>
+		<script type="module" src="/js/feedback-slider.js"></script>
+		<script type="module" src="/js/bestsellers-slider.js"></script>
 	</body>
 </html>
