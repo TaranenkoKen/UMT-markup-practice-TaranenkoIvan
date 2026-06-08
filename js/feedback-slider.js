@@ -83,7 +83,7 @@ async function bootFeedbackSlider() {
 		new Swiper(feedbackSliderStage, {
 			modules: [Navigation, A11y],
 			slidesPerView: 1,
-			spaceBetween: 0,
+			spaceBetween: 24,
 			slidesPerGroup: 1,
 			speed: prefersReducedMotion() ? 0 : 480,
 			navigation: {
