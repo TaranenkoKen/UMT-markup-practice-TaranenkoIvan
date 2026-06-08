@@ -108,14 +108,34 @@ function renderChunk(products, shouldReplaceList) {
 	}
 }
 
+// function normalizeJsonServerProductPage(responseBody, requestedPage) {
+// 	if (Array.isArray(responseBody)) {
+// 		return {
+// 			products: responseBody,
+// 			meta: {
+// 				page: requestedPage,
+// 				totalPages: 1,
+// 				total: responseBody.length,
+// 			},
+// 		};
+// 	}
+// }
+
 function normalizeJsonServerProductPage(responseBody, requestedPage) {
 	if (Array.isArray(responseBody)) {
+		const totalItems = responseBody.length;
+		const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+		const startIndex = (requestedPage - 1) * itemsPerPage;
+		const endIndex = startIndex + itemsPerPage;
+		const paginatedProducts = responseBody.slice(startIndex, endIndex);
+
 		return {
-			products: responseBody,
+			products: paginatedProducts,
 			meta: {
 				page: requestedPage,
-				totalPages: 1,
-				total: responseBody.length,
+				totalPages: totalPages,
+				total: totalItems,
 			},
 		};
 	}
