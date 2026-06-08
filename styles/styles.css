@@ -411,6 +411,7 @@ address {
 
 .mobile-menu__button {
 	padding: 8px 20px;
+	text-align: center;
 }
 
 /* Detail modal */

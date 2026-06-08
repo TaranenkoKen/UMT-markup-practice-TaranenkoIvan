@@ -162,29 +162,6 @@ body {
 	gap: 16px;
 }
 
-/* .pagination-dot {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	background: var(--primary-text);
-	opacity: 0.2;
-	border-radius: 50%;
-}
-
-.pagination-dot__active {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	background: var(--primary-text);
-	border-radius: 50%;
-}
-
-.pagination-dots {
-	display: flex;
-	gap: 8px;
-	align-items: center;
-} */
-
 .bestsellers-pagination .swiper-pagination {
 	position: relative !important;
 	width: auto !important;
