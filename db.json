@@ -3,13 +3,13 @@
 		{
 			"title": "Spring Elegance",
 			"price": 35,
-			"img": "./images/spring-elegance@1x.png",
+			"img": "/images/spring-elegance@1x.png",
 			"desc": "A delicate blend of peonies, tulips, and roses — perfect for springtime gifting and bright smiles."
 		},
 		{
 			"title": "Berry Chic",
 			"price": 40,
-			"img": "./images/berry-chic@1x.png",
+			"img": "/images/berry-chic@1x.png",
 			"desc": "A stylish composition of roses, seasonal greenery, and vibrant berries — a bold and elegant floral statement."
 		},
 		{
@@ -66,7 +66,7 @@
 		{
 			"title": "Peach Meadow",
 			"price": 55,
-			"img": "./images/peach-meadow@1x.png",
+			"img": "/images/peach-meadow@1x.png",
 			"desc": "A soft and radiant arrangement of peach and blush roses with lush greenery in a straw basket — light and natural."
 		},
 		{
