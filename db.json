@@ -15,7 +15,7 @@
 		{
 			"title": "Lavender Dream",
 			"price": 55,
-			"img": "./images/lavender-dream@1x.png",
+			"img": "images/lavender-dream@1x.png",
 			"desc": "A rich bouquet with lavender, lisianthus, and roses — ideal for those who love deep hues and gentle fragrance."
 		},
 		{
@@ -72,43 +72,43 @@
 		{
 			"title": "Blush Romance",
 			"price": 34,
-			"img": "./images/blush-romance@1x.png",
+			"img": "images/blush-romance@1x.png",
 			"desc": "A premium bouquet of deep pink and ivory roses, complemented by silver eucalyptus — sophisticated and intimate."
 		},
 		{
 			"title": "Pastel Garden",
 			"price": 40,
-			"img": "./images/pastel-garden@1x.png",
+			"img": "images/pastel-garden@1x.png",
 			"desc": "A pastel-toned mix of spray roses and greenery in a woven basket — gentle, airy, and perfect for any occasion."
 		},
 		{
 			"title": "Tulip Charm",
 			"price": 61,
-			"img": "./images/tulip-charm@1x.png",
+			"img": "images/tulip-charm@1x.png",
 			"desc": "A vivid bouquet of bright tulips and roses in a lavender box — cheerful and full of charm."
 		},
 		{
 			"title": "Berry Bloom",
 			"price": 32,
-			"img": "./images/berry-bloom@1x.png",
+			"img": "images/berry-bloom@1x.png",
 			"desc": "A lush mix of rich pink, purple, and cream blooms with textured greens — romantic and elegant."
 		},
 		{
 			"title": "Sweet Whisper",
 			"price": 40,
-			"img": "./images/sweet-whisper@1x.png",
+			"img": "images/sweet-whisper@1x.png",
 			"desc": "A charming spring bouquet with peonies, roses, and lilac-toned accents — fresh, lively, and expressive."
 		},
 		{
 			"title": "Field Joy",
 			"price": 49,
-			"img": "./images/field-joy@1x.png",
+			"img": "images/field-joy@1x.png",
 			"desc": "A rustic hand-tied bouquet of sunflowers, lisianthus, and daisies — perfect for brightening the day."
 		},
 		{
 			"title": "Soft Bloom",
 			"price": 37,
-			"img": "./images/soft-bloom@1x.png",
+			"img": "images/soft-bloom@1x.png",
 			"desc": "A delicate bouquet of pink carnations and roses wrapped in satin paper — soft, stylish, and versatile."
 		},
 		{
