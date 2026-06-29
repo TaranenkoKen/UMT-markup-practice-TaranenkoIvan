@@ -1,3 +1,10 @@
+import { apiClient } from './apiClient.js';
+import { extractErrorMessage } from './utils.js';
+import {
+	showErrorNotification,
+	showSuccessNotification,
+} from './notifications.js';
+
 const bouqetCards = document.querySelectorAll('.bouquet-card');
 const detailModal = document.getElementById('detail-modal');
 const closeBtns = document.querySelectorAll('#modal-close-button');
@@ -5,6 +12,14 @@ const detailModalContent = document.getElementById('detail-modal-content');
 const orderModal = document.getElementById('order-modal');
 const orderButtons = document.querySelectorAll('#order-form-button');
 const orderModalForm = document.getElementById('order-modal-form');
+const orderSubmitButton = orderModalForm?.querySelector('.order-modal-cta');
+
+const orderSubmitDefaultLabel = 'Go to Checkout';
+const orderSubmitLoadingLabel = 'Processing...';
+
+let isOrderSubmitting = false;
+let selectedProductId = null;
+let selectedQuantity = 1;
 
 function syncModalOpenState() {
 	const anyModalOpen =
@@ -33,6 +48,21 @@ function closeDetailModal() {
 function closeOrderModal() {
 	orderModal.classList.remove('is-open');
 	syncModalOpenState();
+	selectedProductId = null;
+	selectedQuantity = 1;
+	orderModalForm?.reset();
+}
+
+function setOrderSubmitLoading(isLoading) {
+	if (!orderSubmitButton) {
+		return;
+	}
+
+	orderSubmitButton.disabled = isLoading;
+	orderSubmitButton.classList.toggle('is-loading', isLoading);
+	orderSubmitButton.textContent = isLoading
+		? orderSubmitLoadingLabel
+		: orderSubmitDefaultLabel;
 }
 
 function buildDetailModalMarkup() {
@@ -67,6 +97,8 @@ function openDetailModalwithData(parentItem) {
 	const src = imgEl.getAttribute('src');
 	const rawSrcset = imgEl.getAttribute('srcset');
 	const alt = imgEl.getAttribute('alt');
+
+	selectedProductId = parseInt(parentItem.dataset.productId, 10);
 
 	detailModalContent.replaceChildren();
 	detailModalContent.insertAdjacentHTML('beforeend', buildDetailModalMarkup());
@@ -123,22 +155,59 @@ detailModalContent.addEventListener('click', (e) => {
 		e.target.id === 'detail-modal-cta' ||
 		e.target.closest('#detail-modal-cta')
 	) {
+		const quantityInput = detailModalContent.querySelector(
+			'.detail-modal-quantity',
+		);
+		if (quantityInput) {
+			selectedQuantity = parseInt(quantityInput.value, 10) || 1;
+		}
 		closeDetailModal();
 		openOrderModal();
 	}
 });
 
-orderModalForm.addEventListener('submit', (e) => {
+orderModalForm?.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
+	if (isOrderSubmitting || orderModalForm.dataset.submitting === 'true') {
+		return;
+	}
+
+	isOrderSubmitting = true;
+	orderModalForm.dataset.submitting = 'true';
+
 	const formData = new FormData(e.currentTarget);
+	const payload = Object.fromEntries(formData.entries());
 
-	const data = Object.fromEntries(formData.entries());
+	setOrderSubmitLoading(true);
 
-	console.log('name', data.name);
+	try {
+		await apiClient.post('/order', {
+			name: payload.name,
+			phone: payload.phone,
+			address: payload.address,
+			message: payload.message ?? '',
+			productId: selectedProductId,
+			quantity: selectedQuantity,
+		});
 
-	alert(`Thank you for your order, ${data.name}!`);
+		showSuccessNotification(
+			`Thanks, ${payload.name}! We will call you at ${payload.phone}.`,
+		);
+		orderModalForm?.reset();
+		closeOrderModal();
+	} catch (error) {
+		const message = extractErrorMessage(
+			error,
 
-	e.currentTarget.reset();
-	closeOrderModal();
+			'Order failed. Please try again later.',
+		);
+		if (message) {
+			showErrorNotification(message);
+		}
+	} finally {
+		isOrderSubmitting = false;
+		delete orderModalForm.dataset.submitting;
+		setOrderSubmitLoading(false);
+	}
 });

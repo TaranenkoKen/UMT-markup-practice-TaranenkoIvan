@@ -49,6 +49,7 @@ function fillBouquetsListItem(listItem, product) {
 	listItem.querySelector('.bouquets-list-description').textContent =
 		product.desc;
 	listItem.querySelector('.price').textContent = formatPriceUsd(product.price);
+	listItem.dataset.productId = product.id;
 }
 
 function setShowMoreButtonLoading(isLoading) {
@@ -108,54 +109,20 @@ function renderChunk(products, shouldReplaceList) {
 	}
 }
 
-// function normalizeJsonServerProductPage(responseBody, requestedPage) {
-// 	if (Array.isArray(responseBody)) {
-// 		return {
-// 			products: responseBody,
-// 			meta: {
-// 				page: requestedPage,
-// 				totalPages: 1,
-// 				total: responseBody.length,
-// 			},
-// 		};
-// 	}
-// }
-
-function normalizeJsonServerProductPage(responseBody, requestedPage) {
-	if (Array.isArray(responseBody)) {
-		const totalItems = responseBody.length;
-		const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-		const startIndex = (requestedPage - 1) * itemsPerPage;
-		const endIndex = startIndex + itemsPerPage;
-		const paginatedProducts = responseBody.slice(startIndex, endIndex);
-
-		return {
-			products: paginatedProducts,
-			meta: {
-				page: requestedPage,
-				totalPages: totalPages,
-				total: totalItems,
-			},
-		};
-	}
-
+function normalizeBouquetsPage(responseBody, requestedPage) {
 	const products = responseBody?.data ?? [];
-	const parsedTotalProducts = Number(responseBody?.items);
-	const parsedTotalPages = Number(responseBody?.pages);
+	const apiMeta = responseBody?.meta ?? {};
 
-	const meta = {
-		page: requestedPage,
-		totalPages:
-			Number.isFinite(parsedTotalPages) && parsedTotalPages >= 1
-				? parsedTotalPages
-				: 1,
-		total: Number.isFinite(parsedTotalProducts)
-			? parsedTotalProducts
-			: products.length,
+	return {
+		products,
+		meta: {
+			page: requestedPage,
+			totalPages: Number(apiMeta.pages) >= 1 ? Number(apiMeta.pages) : 1,
+			total: Number.isFinite(Number(apiMeta.items))
+				? Number(apiMeta.items)
+				: products.length,
+		},
 	};
-
-	return { products, meta };
 }
 
 async function fetchPage(page, options) {
@@ -173,18 +140,15 @@ async function fetchPage(page, options) {
 
 	try {
 		const requestParams = {
-			_page: page,
-			_per_page: itemsPerPage,
+			page,
+			'per-page': itemsPerPage,
 		};
 
-		const response = await apiClient.get('/products', {
+		const response = await apiClient.get('/bouquet', {
 			params: requestParams,
 		});
 
-		const { products, meta } = normalizeJsonServerProductPage(
-			response.data,
-			page,
-		);
+		const { products, meta } = normalizeBouquetsPage(response.data, page);
 
 		renderChunk(products, !appendItems);
 		lastLoadedPage = page;

@@ -70,7 +70,7 @@ async function bootBestsellersSlider() {
 	}
 
 	try {
-		const response = await apiClient.get('/bestsellers');
+		const response = await apiClient.get('/bestseller');
 		const body = response.data;
 		const bestsellerItems = Array.isArray(body) ? body : (body?.data ?? []);
 

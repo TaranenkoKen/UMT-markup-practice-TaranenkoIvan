@@ -20,9 +20,9 @@ function buildNotificationElement(message, varint) {
 	return element;
 }
 
-export function showNotification(message) {
+export function showNotification(message, variant) {
 	const root = ensureNotificationRoot();
-	const element = buildNotificationElement(message, 'error');
+	const element = buildNotificationElement(message, variant);
 	root.append(element);
 
 	const dismissMs = 7000;
